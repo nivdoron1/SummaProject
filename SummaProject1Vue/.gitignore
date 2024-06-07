@@ -108,7 +108,6 @@ artifacts/
 # .NET Core Installer Log
 setup/
 .NETCoreApp,Version=v*
-.vs/
 .vscode/
 .env
 
