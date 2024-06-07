@@ -40,6 +40,6 @@ Accept: application/json
 
 ###
 
-# DELETE user by ID
+# GET all users
 GET {{SummaProject1Vue_HostAddress}}/users/allUsers
 Accept: application/json
