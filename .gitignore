@@ -1,0 +1,153 @@
+# .NET
+*.ds_store
+*.swp
+*~ 
+.project
+.idea
+.vscode
+.DS_Store
+
+# Build directories
+bin/
+obj/
+out/
+artifacts/
+
+# User-specific files
+*.rsuser
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+# Auto-generated files
+*.sln.ide
+*.sln.ide.sqlproj
+*.sln.ide.mdf
+*.sln.ide.ldf
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Entity Framework
+*.edmx.diagram
+*.edmx.sql
+
+# Azure
+.localhistory
+*.azurePubxml
+
+# StyleCop
+StyleCopReport.xml
+
+# IIS
+\IISExpress
+\VSWebCache
+
+# Visual Studio
+.vs/
+.vscode/
+_ReSharper*/
+.idea/
+.idea_modules/
+**/riderSolutionCaches/
+.vscode/
+
+# Rider
+.idea/
+.idea_modules/
+**/riderSolutionCaches/
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# NCrunch
+.ncrunchsolution
+
+# Miscellaneous files
+*.class
+*.dbmdl
+*.pdb
+*.log
+*.vspscc
+*.vssscc
+
+# Build results
+**/bin/
+**/obj/
+*.Build.cs
+
+# NuGet
+*.nupkg
+# NuGet Symbol Packages
+*.snupkg
+
+# npm
+node_modules/
+npm-debug.log
+
+# JetBrains Rider
+.idea/
+.idea_modules/
+
+# Azure Pipelines
+temp/
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# .NET Core Installer Log
+setup/
+.NETCoreApp,Version=v*
+.vs/
+.vscode/
+.env
+
+# NDepend
+NDependOut/
+
+# Windows
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# VS Code
+.history
+.ionide
+
+# Tooling
+.packages
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.sln.ide
+*.sln.ide.sqlproj
+*.sln.ide.mdf
+*.sln.ide.ldf
+
+# Auto-generated files (learn more at https://docs.microsoft.com/en-us/dotnet/core/tools/sdk-errors/netsdk1024)
+*.sln.ide
+*.sln.ide.sqlproj
+*.sln.ide.mdf
+*.sln.ide.ldf
+
+# End of https://www.toptal.com/developers/gitignore/api/visualstudio,windows,visualstudiocode,csharp,aspnetcore,aspnetcore-swa,nuget,entityframework
