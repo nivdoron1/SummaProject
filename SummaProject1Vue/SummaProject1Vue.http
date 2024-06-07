@@ -1,25 +1,38 @@
 @SummaProject1Vue_HostAddress = http://localhost:5271
 
-# GET weather forecast
-GET {{SummaProject1Vue_HostAddress}}/weatherforecast/
-Accept: application/json
 
 ###
 
-# POST create user
-POST {{SummaProject1Vue_HostAddress}}/users
-Content-Type: application/json
-Accept: application/json
-
-{
-    "username": "newuser",
-    "email": "newuser@example.com",
-    "dob": "2000-01-01",
-    "photo": "photo_url_here"
-}
-
-###
 
 # GET user by ID
 GET {{SummaProject1Vue_HostAddress}}/users/1
+Accept: application/json
+###
+
+
+# GET user by EMAIL
+GET {{SummaProject1Vue_HostAddress}}/users/email/someone@example.com
+Accept: application/json
+###
+
+
+# POST CreateOrUpdateUser
+POST {{SummaProject1Vue_HostAddress}}/users/createOrUpdateUser
+Content-Type: multipart/form-data
+
+-- Form-data --
+Username: JohnDoe
+Email: johndoe@example.com
+BirthDate: 1980-01-01
+
+###
+
+# DELETE user by EMAIL
+DELETE {{SummaProject1Vue_HostAddress}}/users/email/johndoe@example.com
+Accept: application/json
+
+###
+
+# DELETE user by ID
+DELETE {{SummaProject1Vue_HostAddress}}/users/2
 Accept: application/json

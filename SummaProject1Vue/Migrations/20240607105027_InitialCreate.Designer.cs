@@ -11,7 +11,7 @@ using SummaProject1Vue;
 namespace SummaProject1Vue.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240607093014_InitialCreate")]
+    [Migration("20240607105027_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -32,7 +32,7 @@ namespace SummaProject1Vue.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Dob")
+                    b.Property<string>("BirthDate")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -40,8 +40,8 @@ namespace SummaProject1Vue.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Photo")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte[]>("Photo")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Username")
                         .IsRequired()
