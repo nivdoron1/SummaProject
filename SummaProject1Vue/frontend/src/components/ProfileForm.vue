@@ -12,7 +12,7 @@
             </div>
             <div>
                 <label for="dob">Date of Birth:</label>
-                <input type="date" v-model="user.dob" required>
+                <input type="date" v-model="user.birthDate" required>
             </div>
             <div>
                 <label for="photo">Photo:</label>
@@ -25,37 +25,41 @@
 </template>
 
 <script>
-    import { createUser } from './userService';
+import { createUser } from './userService';
 
-    export default {
-        data() {
-            return {
-                user: {
-                    username: '',
-                    email: '',
-                    dob: '',
-                    photo: ''
-                },
-                message: ''
-            };
-        },
-        methods: {
-            async handleSubmit() {
-                try {
-                    const newUser = await createUser(this.user);
-                    this.message = `User created successfully with ID: ${newUser.id}`;
-                } catch (error) {
-                    this.message = 'Error creating user';
-                }
+export default {
+    data() {
+        return {
+            user: {
+                username: '',
+                email: '',
+                birthDate: '',
+                photo: null // Store the file directly
             },
-            handleFileChange(event) {
-                const file = event.target.files[0];
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    this.user.photo = e.target.result;
-                };
-                reader.readAsDataURL(file);
+            message: ''
+        };
+    },
+    methods: {
+        async handleSubmit() {
+            try {
+                // Create a FormData object to handle file upload
+                const formData = new FormData();
+                formData.append('Username', this.user.username);
+                formData.append('Email', this.user.email);
+                formData.append('BirthDate', this.user.birthDate);
+                if (this.user.photo) {
+                    formData.append('photo', this.user.photo);
+                }
+                
+                const newUser = await createUser(formData);
+                this.message = `User created successfully with ID: ${newUser.id}`;
+            } catch (error) {
+                this.message = 'Error creating user';
             }
+        },
+        handleFileChange(event) {
+            this.user.photo = event.target.files[0]; // Store the file object directly
         }
-    };
+    }
+};
 </script>
