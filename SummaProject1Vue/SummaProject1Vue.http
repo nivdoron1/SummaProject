@@ -36,3 +36,10 @@ Accept: application/json
 # DELETE user by ID
 DELETE {{SummaProject1Vue_HostAddress}}/users/2
 Accept: application/json
+
+
+###
+
+# DELETE user by ID
+GET {{SummaProject1Vue_HostAddress}}/users/allUsers
+Accept: application/json

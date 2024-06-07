@@ -2,8 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SixLabors.ImageSharp.Formats.Jpeg;
 using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.Formats.Jpeg;
-using SixLabors.ImageSharp.Processing;
 namespace SummaProject1Vue.Controllers
 {
     [ApiController]
@@ -143,6 +141,23 @@ namespace SummaProject1Vue.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error deleting user by email");
+                return StatusCode(500, "Internal server error");
+            }
+        }
+        
+        [HttpGet("allUsers")]
+        public async Task<ActionResult<Dictionary<int, string>>> GetAllUsers()
+        {
+            try
+            {
+                var users = await _context.Users
+                    .ToDictionaryAsync(u => u.Id, u => u.Username);
+
+                return Ok(users);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error fetching all users");
                 return StatusCode(500, "Internal server error");
             }
         }
