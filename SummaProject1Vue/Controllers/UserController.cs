@@ -97,6 +97,7 @@ namespace SummaProject1Vue.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
+
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteUserById(int id)
         {
@@ -154,7 +155,16 @@ namespace SummaProject1Vue.Controllers
             {
                 using var memoryStream = new MemoryStream();
                 await photo.CopyToAsync(memoryStream);
-                return memoryStream.ToArray();
+
+                using var originalImage = System.Drawing.Image.FromStream(memoryStream);
+                var encoderParameters = new System.Drawing.Imaging.EncoderParameters(1);
+                encoderParameters.Param[0] = new System.Drawing.Imaging.EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 50L);
+
+                var jpegCodec = GetEncoder(System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                using var compressedStream = new MemoryStream();
+                originalImage.Save(compressedStream, jpegCodec, encoderParameters);
+                return compressedStream.ToArray();
             }
             catch (Exception ex)
             {
@@ -163,5 +173,17 @@ namespace SummaProject1Vue.Controllers
             }
         }
 
+        private System.Drawing.Imaging.ImageCodecInfo GetEncoder(System.Drawing.Imaging.ImageFormat format)
+        {
+            var codecs = System.Drawing.Imaging.ImageCodecInfo.GetImageDecoders();
+            foreach (var codec in codecs)
+            {
+                if (codec.FormatID == format.Guid)
+                {
+                    return codec;
+                }
+            }
+            return null;
+        }
     }
 }
