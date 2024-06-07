@@ -5,7 +5,7 @@
 
 
 # GET user by ID
-GET {{SummaProject1Vue_HostAddress}}/users/1
+GET {{SummaProject1Vue_HostAddress}}/users/1002
 Accept: application/json
 ###
 
