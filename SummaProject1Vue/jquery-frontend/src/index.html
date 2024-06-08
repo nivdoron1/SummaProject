@@ -5,56 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>jQuery User Form</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <style>
-        .error-message {
-            color: red;
-        }
-        .scrollable-list {
-            max-height: 400px;
-            overflow-y: auto;
-            border: 1px solid #ccc;
-        }
-        .v-container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .user-details img {
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="public/favicon.ico" type="image/x-icon" />
 </head>
 <body>
-    <div class="container">
-        <h1 id="form-title">Create User</h1>
-        <form id="user-form">
-            <div class="input-field">
-                <input id="username" type="text" class="validate" required>
-                <label for="username">Username</label>
-            </div>
-            <div class="input-field">
-                <input id="email" type="email" class="validate" required>
-                <label for="email">Email</label>
-                <span id="email-error" class="error-message"></span>
-            </div>
-            <div class="input-field">
-                <input id="birthDate" type="date" class="validate" required>
-                <label for="birthDate">Date of Birth</label>
-                <span id="birthDate-error" class="error-message"></span>
-            </div>
-            <div class="file-field input-field">
-                <div class="btn">
-                    <span>Photo</span>
-                    <input type="file" id="photo">
-                </div>
-                <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text">
-                </div>
-            </div>
-            <button id="submit-button" class="btn waves-effect waves-light" type="submit" disabled>Create User</button>
-            <button id="reset-button" class="btn waves-effect waves-light" type="button">Clear</button>
-        </form>
-        <p id="message"></p>
+    <div class="v-container">
+        <div id="form-container" class="form-container"></div>
     </div>
     <div class="v-container">
         <h1>User List</h1>
@@ -93,6 +49,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="./index.js"> </script>
+    <script src="index.js"></script>
 </body>
 </html>

@@ -1,0 +1,24 @@
+.error-message {
+    color: red;
+}
+.scrollable-list {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+}
+.v-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+.user-details img {
+    max-width: 100%;
+    height: auto;
+}
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
