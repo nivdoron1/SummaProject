@@ -1,9 +1,11 @@
 <template>
   <v-app>
-    <v-container>
-      <ProfileForm />
-      <UserList />
-    </v-container>
+    <v-main>
+      <v-container>
+        <ProfileForm @user-updated="handleUserUpdated" />
+        <UserList ref="userList" />
+      </v-container>
+    </v-main>
   </v-app>
 </template>
 
@@ -15,20 +17,12 @@ export default {
   name: 'App',
   components: {
     ProfileForm,
-    UserList
+    UserList,
+  },
+  methods: {
+    handleUserUpdated() {
+      this.$refs.userList.fetchUsers(); // Call fetchUsers method in UserList component
+    }
   }
 };
 </script>
-
-<style>
-@import 'vuetify/dist/vuetify.min.css';
-
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
