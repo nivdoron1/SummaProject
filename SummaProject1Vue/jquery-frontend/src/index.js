@@ -105,10 +105,6 @@ function createUserForm(containerId, isUpdate = false, userData = {}) {
     fileField.appendChild(filePathWrapper);
     form.appendChild(fileField);
 
-    if (isUpdate && userData.photo) {
-        hiddenPhotoInput = userData.photo;
-    }
-    
     // Create submit button
     const submitButton = document.createElement('button');
     submitButton.id = 'submit-button';
@@ -166,6 +162,7 @@ $(document).ready(function () {
             processData: false,
             contentType: false,
             success: function (data) {
+                fetchUsers();
                 return data;
             },
             error: function (error) {
@@ -217,14 +214,6 @@ $(document).ready(function () {
     };
 
     const today = new Date().toISOString().split('T')[0];
-    const user = null; // Set this variable to the user object if updating a user
-
-    if (user) {
-        $('#form-title').text('Update User');
-        $('#username').val(user.username).focus();
-        $('#email').val(user.email).attr('disabled', true);
-        $('#birthDate').val(user.birthDate);
-    }
 
     $('#user-form').on('submit', async function (event) {
         event.preventDefault();
@@ -245,6 +234,7 @@ $(document).ready(function () {
 
         try {
             const response = await createUpdateUser(formData);
+            fetchUsers();
             $('#message').text(`User created successfully with ID: ${response.id}`);
             handleReset();
             alert(`User created/updated successfully with ID: ${response.id}`);
@@ -289,7 +279,6 @@ $(document).ready(function () {
         $('#photo').val('');
         $('.file-path').val('');
         $('#message').text('');
-        $('#submit-button');
     }
 
     const userList = $('#userList');
@@ -384,7 +373,6 @@ $(document).ready(function () {
         return new File([blob], filename, { type: mime });
     }
     
-
     async function removeUser(userId) {
         try {
             await deleteUserById(userId);
@@ -422,6 +410,7 @@ $(document).ready(function () {
         
             try {
                 const response = await createUpdateUser(formData, true);
+                fetchUsers();
                 $('#message').text(`User updated successfully with ID: ${response.id}`);
                 handleReset();
                 alert(`User updated successfully with ID: ${response.id}`);
@@ -431,15 +420,6 @@ $(document).ready(function () {
                 alert(`Error updating user: ${error.message}`);
             }
         });   
-    }
-       
-
-    async function handleUpdate() {
-        M.Modal.getInstance(editUserDialog).close();
-        fetchUsers();
-        if (selectedUser) {
-            selectedUser = await getUserById(selectedUser.id); 
-        }
     }
 
     searchQuery.on('input', renderUserList);
@@ -463,4 +443,5 @@ $(document).ready(function () {
     M.Modal.init(editUserDialog[0]);
 
     fetchUsers();
+    
 });
