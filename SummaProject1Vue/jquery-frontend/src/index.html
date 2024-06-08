@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery User Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+        .error-message {
+            color: red;
+        }
+        .scrollable-list {
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+        }
+        .v-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .user-details img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="form-title">Create User</h1>
+        <form id="user-form">
+            <div class="input-field">
+                <input id="username" type="text" class="validate" required>
+                <label for="username">Username</label>
+            </div>
+            <div class="input-field">
+                <input id="email" type="email" class="validate" required>
+                <label for="email">Email</label>
+                <span id="email-error" class="error-message"></span>
+            </div>
+            <div class="input-field">
+                <input id="birthDate" type="date" class="validate" required>
+                <label for="birthDate">Date of Birth</label>
+                <span id="birthDate-error" class="error-message"></span>
+            </div>
+            <div class="file-field input-field">
+                <div class="btn">
+                    <span>Photo</span>
+                    <input type="file" id="photo">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                </div>
+            </div>
+            <button id="submit-button" class="btn waves-effect waves-light" type="submit" disabled>Create User</button>
+            <button id="reset-button" class="btn waves-effect waves-light" type="button">Clear</button>
+        </form>
+        <p id="message"></p>
+    </div>
+    <div class="v-container">
+        <h1>User List</h1>
+        <!-- Search Field -->
+        <div class="input-field">
+            <input id="searchQuery" type="text" class="validate" placeholder="Search Users">
+        </div>
+        <!-- User List -->
+        <ul id="userList" class="scrollable-list collection"></ul>
+        <!-- User Details Dialog -->
+        <div id="userDetailsDialog" class="modal">
+            <div class="modal-content user-details">
+                <h4>User Details</h4>
+                <img id="userPhoto" src="" alt="User Photo">
+                <p><strong>Username:</strong> <span id="userDetailsUsername"></span></p>
+                <p><strong>Email:</strong> <span id="userDetailsEmail"></span></p>
+                <p><strong>Birth Date:</strong> <span id="userDetailsBirthDate"></span></p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" id="deleteUser" class="modal-close waves-effect waves-orange btn-flat">DELETE</a>
+                <a href="#!" id="updateUser" class="modal-close waves-effect waves-orange btn-flat">UPDATE</a>
+                <a href="#!" class="modal-close waves-effect waves-blue btn-flat">Close</a>
+            </div>
+        </div>
+        <!-- Edit User Dialog -->
+        <div id="editUserDialog" class="modal">
+            <div class="modal-content">
+                <h4>Update User</h4>
+                <div id="editUserForm"></div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-blue btn-flat">Close</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./index.js"> </script>
+</body>
+</html>
