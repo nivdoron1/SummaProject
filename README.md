@@ -302,3 +302,8 @@ Make sure to set the following environment variables:
 - `SENDGRID_USERNAME`: The username to be displayed in the email.
 
 These can be set manually or by running the provided batch file (`setenv.bat`).
+
+## Additional Instructions
+To call the API functions, refer to the SummaProject.http file and send the request as needed.
+
+
