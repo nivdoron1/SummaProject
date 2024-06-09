@@ -43,3 +43,9 @@ Accept: application/json
 # GET all users
 GET {{SummaProject1Vue_HostAddress}}/users/allUsers
 Accept: application/json
+
+###
+
+# GET json Parsing Data
+GET {{SummaProject1Vue_HostAddress}}/invoice/sendemail/nivdoron1234@hotmail.com
+Accept: application/json

@@ -16,7 +16,15 @@ namespace SummaProject1Vue.Controllers
             _context = context;
             _logger = logger;
         }
-
+        
+        /// <summary>
+        /// Creates or updates a user.
+        /// </summary>
+        /// <param name="Username">The username of the user.</param>
+        /// <param name="Email">The email of the user.</param>
+        /// <param name="BirthDate">The birth date of the user.</param>
+        /// <param name="photo">The photo of the user (optional).</param>
+        /// <returns>The created or updated user.</returns>
         [HttpPost("createOrUpdateUser")]
         public async Task<ActionResult<User>> CreateOrUpdateUser([FromForm] string Username, [FromForm] string Email, [FromForm] string BirthDate, [FromForm] IFormFile? photo = null)
         {
@@ -57,6 +65,11 @@ namespace SummaProject1Vue.Controllers
             }
         }
 
+        /// <summary>
+        /// Gets a user by ID.
+        /// </summary>
+        /// <param name="id">The ID of the user.</param>
+        /// <returns>The user with the specified ID.</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUserById(int id)
         {
@@ -77,7 +90,12 @@ namespace SummaProject1Vue.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
-
+        
+        /// <summary>
+        /// Gets a user by email.
+        /// </summary>
+        /// <param name="email">The email of the user.</param>
+        /// <returns>The user with the specified email.</returns>
         [HttpGet("email/{email}")]
         public async Task<ActionResult<User>> GetUserByEmail(string email)
         {
@@ -98,7 +116,12 @@ namespace SummaProject1Vue.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
-
+        
+        /// <summary>
+        /// Deletes a user by ID.
+        /// </summary>
+        /// <param name="id">The ID of the user to delete.</param>
+        /// <returns>A status indicating the result of the delete operation.</returns>
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteUserById(int id)
         {
@@ -121,7 +144,12 @@ namespace SummaProject1Vue.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
-
+        
+        /// <summary>
+        /// Deletes a user by email.
+        /// </summary>
+        /// <param name="email">The email of the user to delete.</param>
+        /// <returns>A status indicating the result of the delete operation.</returns>
         [HttpDelete("email/{email}")]
         public async Task<ActionResult> DeleteUserByEmail(string email)
         {
@@ -145,6 +173,10 @@ namespace SummaProject1Vue.Controllers
             }
         }
         
+        /// <summary>
+        /// Gets all users.
+        /// </summary>
+        /// <returns>A dictionary of all users with their IDs and usernames.</returns>
         [HttpGet("allUsers")]
         public async Task<ActionResult<Dictionary<int, string>>> GetAllUsers()
         {
@@ -161,7 +193,12 @@ namespace SummaProject1Vue.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
-
+        
+        /// <summary>
+        /// Converts a photo to a byte array.
+        /// </summary>
+        /// <param name="photo">The photo to convert.</param>
+        /// <returns>A byte array representation of the photo.</returns>
         private async Task<byte[]> ConvertPhotoToByteArrayAsync(IFormFile photo)
         {
             if (photo == null || photo.Length == 0)
